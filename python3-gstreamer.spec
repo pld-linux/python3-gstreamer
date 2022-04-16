@@ -1,18 +1,18 @@
-%define		gst_ver	1.18.5
+%define		gst_ver	1.20.0
 %define		pname	gst-python
 Summary:	GStreamer Python 3 bindings
 Summary(pl.UTF-8):	Wiązania języka Python 3 do GStreamera
 Name:		python3-gstreamer
-Version:	1.18.5
+Version:	1.20.1
 Release:	1
 License:	LGPL v2+
 Group:		Libraries/Python
 Source0:	https://gstreamer.freedesktop.org/src/gst-python/%{pname}-%{version}.tar.xz
-# Source0-md5:	eb19229f72f61506e33182a6fbce4a2e
+# Source0-md5:	bc076b09ab697d52ef41fc6c328550f3
 Patch0:		%{name}-nosegv.patch
 URL:		https://gstreamer.freedesktop.org/modules/gst-python.html
 BuildRequires:	gstreamer-devel >= %{gst_ver}
-BuildRequires:	meson >= 0.46.0
+BuildRequires:	meson >= 0.59.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	python3-devel >= 1:3.3
@@ -37,7 +37,7 @@ Summary:	GStreamer plugin to load plugins written in Python 3
 Summary(pl.UTF-8):	Wtyczka GStreamera do wczytywania wtyczek napisanych w Pythonie 3
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
-# gstreamer 1.18 doesn't support python2 anymore
+# gstreamer 1.18+ doesn't support python2 anymore
 Obsoletes:	gstreamer-python < 1.18
 
 %description -n gstreamer-python3
@@ -51,7 +51,8 @@ Wtyczka GStreamera do wczytywania wtyczek napisanych w Pythonie 3.
 %patch0 -p1
 
 %build
-%meson build
+%meson build \
+	--default-library=shared
 
 %ninja_build -C build
 
@@ -70,12 +71,16 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS TODO
+%doc AUTHORS ChangeLog NEWS RELEASE TODO
 %attr(755,root,root) %{py3_sitedir}/gi/overrides/_gi_gst.cpython-*.so
 %{py3_sitedir}/gi/overrides/Gst.py
+%{py3_sitedir}/gi/overrides/GstAudio.py
 %{py3_sitedir}/gi/overrides/GstPbutils.py
+%{py3_sitedir}/gi/overrides/GstVideo.py
 %{py3_sitedir}/gi/overrides/__pycache__/Gst.*.py[co]
+%{py3_sitedir}/gi/overrides/__pycache__/GstAudio.*.py[co]
 %{py3_sitedir}/gi/overrides/__pycache__/GstPbutils.*.py[co]
+%{py3_sitedir}/gi/overrides/__pycache__/GstVideo.*.py[co]
 
 %files -n gstreamer-python3
 %defattr(644,root,root,755)
