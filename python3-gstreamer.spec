@@ -52,7 +52,8 @@ Wtyczka GStreamera do wczytywania wtyczek napisanych w Pythonie 3.
 
 %build
 %meson build \
-	--default-library=shared
+	--default-library=shared \
+	-Dpygi-overrides-dir=%{py3_sitedir}/gi/overrides
 
 %ninja_build -C build
 
