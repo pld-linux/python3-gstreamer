@@ -3,12 +3,12 @@
 Summary:	GStreamer Python 3 bindings
 Summary(pl.UTF-8):	Wiązania języka Python 3 do GStreamera
 Name:		python3-gstreamer
-Version:	1.22.5
+Version:	1.22.6
 Release:	1
 License:	LGPL v2+
 Group:		Libraries/Python
 Source0:	https://gstreamer.freedesktop.org/src/gst-python/%{pname}-%{version}.tar.xz
-# Source0-md5:	d68ad23bea368c3a6aa0f60799cb72fb
+# Source0-md5:	b0786dc724607ab5a42b9a57c61797d5
 Patch0:		%{name}-nosegv.patch
 URL:		https://gstreamer.freedesktop.org/modules/gst-python.html
 BuildRequires:	gstreamer-devel >= %{gst_ver}
