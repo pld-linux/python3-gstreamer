@@ -1,21 +1,21 @@
-%define		gst_ver	1.22.0
+%define		gst_ver	1.24.0
 %define		pname	gst-python
 Summary:	GStreamer Python 3 bindings
 Summary(pl.UTF-8):	Wiązania języka Python 3 do GStreamera
 Name:		python3-gstreamer
-Version:	1.22.6
+Version:	1.24.0
 Release:	1
 License:	LGPL v2+
 Group:		Libraries/Python
 Source0:	https://gstreamer.freedesktop.org/src/gst-python/%{pname}-%{version}.tar.xz
-# Source0-md5:	b0786dc724607ab5a42b9a57c61797d5
+# Source0-md5:	a9f4f4308a95445688c8a15c84704c01
 Patch0:		%{name}-nosegv.patch
 URL:		https://gstreamer.freedesktop.org/modules/gst-python.html
 BuildRequires:	gstreamer-devel >= %{gst_ver}
-BuildRequires:	meson >= 0.62
+BuildRequires:	meson >= 1.1
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig >= 1:0.9.0
-BuildRequires:	python3-devel >= 1:3.3
+BuildRequires:	python3-devel >= 1:3.7
 BuildRequires:	python3-pygobject3-devel >= 3.8
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.736
@@ -72,7 +72,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS RELEASE TODO
+%doc ChangeLog NEWS README.md RELEASE
 %attr(755,root,root) %{py3_sitedir}/gi/overrides/_gi_gst.cpython-*.so
 %{py3_sitedir}/gi/overrides/Gst.py
 %{py3_sitedir}/gi/overrides/GstAudio.py
