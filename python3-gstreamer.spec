@@ -3,12 +3,12 @@
 Summary:	GStreamer Python 3 bindings
 Summary(pl.UTF-8):	Wiązania języka Python 3 do GStreamera
 Name:		python3-gstreamer
-Version:	1.24.8
+Version:	1.24.12
 Release:	1
 License:	LGPL v2+
 Group:		Libraries/Python
 Source0:	https://gstreamer.freedesktop.org/src/gst-python/%{pname}-%{version}.tar.xz
-# Source0-md5:	2453857d6bc208321c38c039aa653035
+# Source0-md5:	3080fb395f9c1c255b19ffcd01373a86
 Patch0:		%{name}-nosegv.patch
 URL:		https://gstreamer.freedesktop.org/modules/gst-python.html
 BuildRequires:	gstreamer-devel >= %{gst_ver}
@@ -18,7 +18,7 @@ BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	python3-devel >= 1:3.7
 BuildRequires:	python3-pygobject3-devel >= 3.8
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires:	gstreamer >= %{gst_ver}
@@ -51,16 +51,16 @@ Wtyczka GStreamera do wczytywania wtyczek napisanych w Pythonie 3.
 %patch -P0 -p1
 
 %build
-%meson build \
+%meson \
 	--default-library=shared \
 	-Dpygi-overrides-dir=%{py3_sitedir}/gi/overrides
 
-%ninja_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%ninja_install -C build
+%meson_install
 
 %py3_comp $RPM_BUILD_ROOT%{py3_sitedir}
 %py3_ocomp $RPM_BUILD_ROOT%{py3_sitedir}
