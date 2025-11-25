@@ -12,6 +12,7 @@ Source0:	https://gstreamer.freedesktop.org/src/gst-python/%{pname}-%{version}.ta
 Patch0:		%{name}-nosegv.patch
 URL:		https://gstreamer.freedesktop.org/modules/gst-python.html
 BuildRequires:	gstreamer-devel >= %{gst_ver}
+BuildRequires:	gstreamer-plugins-bad-devel >= %{gst_ver}
 BuildRequires:	meson >= 1.4
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig >= 1:0.9.0
