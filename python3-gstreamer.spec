@@ -3,13 +3,12 @@
 Summary:	GStreamer Python 3 bindings
 Summary(pl.UTF-8):	Wiązania języka Python 3 do GStreamera
 Name:		python3-gstreamer
-Version:	1.26.0
+Version:	1.26.8
 Release:	1
 License:	LGPL v2+
 Group:		Libraries/Python
 Source0:	https://gstreamer.freedesktop.org/src/gst-python/%{pname}-%{version}.tar.xz
-# Source0-md5:	621f85937c48ef0c5142a8703591062d
-Patch0:		%{name}-nosegv.patch
+# Source0-md5:	5a887d6a086b8eb88767793df5f32197
 URL:		https://gstreamer.freedesktop.org/modules/gst-python.html
 BuildRequires:	gstreamer-devel >= %{gst_ver}
 BuildRequires:	gstreamer-plugins-bad-devel >= %{gst_ver}
@@ -49,7 +48,6 @@ Wtyczka GStreamera do wczytywania wtyczek napisanych w Pythonie 3.
 
 %prep
 %setup -q -n %{pname}-%{version}
-%patch -P0 -p1
 
 %build
 %meson \
